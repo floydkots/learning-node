@@ -50,6 +50,14 @@ app.get('/about', (request, response) => {
 });
 
 
+app.get('/projects', (request, response) => {
+  response.render('projects.hbs', {
+    pageTitle: 'Porfolio Page',
+    welcomeMessage: 'Projects here'
+  })
+});
+
+
 app.get('/bad', (request, response) => {
   response.send({
     errorMessage: 'Unable to fulfill this request'
