@@ -1,0 +1,15 @@
+{
+  "name": "notes",
+  "version": "1.0.0",
+  "description": "A notes app",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Floyd Kots",
+  "license": "ISC",
+  "dependencies": {
+    "lodash": "^4.17.4",
+    "yargs": "^10.1.1"
+  }
+}
