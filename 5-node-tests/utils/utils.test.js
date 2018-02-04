@@ -62,7 +62,6 @@ describe('Utils', () => {
       expect(result).toInclude({firstName: 'Floyd', lastName: 'Kots'});
     });
   })
-
 });
 
 
