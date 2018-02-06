@@ -30,7 +30,7 @@ let UserSchema = new mongoose.Schema({
       type: String,
       required: true
     }
-  }]
+  }],
 });
 
 UserSchema.methods.toJSON = function() {
