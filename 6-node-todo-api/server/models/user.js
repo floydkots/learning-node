@@ -52,6 +52,11 @@ UserSchema.methods.generateAuthToken = function() {
   return user.save().then(() => token)
 };
 
+UserSchema.methods.removeToken = function(token) {
+  let user = this;
+  return user.update({ $pull: { tokens: { token }}})
+};
+
 UserSchema.statics.findByCredentials = function(email, password) {
   let User = this;
   return User.findOne({ email })
