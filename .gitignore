@@ -115,3 +115,4 @@ typings/
 
 # Jetbrains Webstore dir
 .idea
+config.json

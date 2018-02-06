@@ -4,6 +4,8 @@ const jwt = require('jsonwebtoken');
 const _ = require('lodash');
 const bcrypt = require('bcryptjs');
 
+const JWT_SECRET = process.env['JWT_SECRET'];
+
 let UserSchema = new mongoose.Schema({
   email: {
     type: String,
@@ -45,7 +47,7 @@ UserSchema.methods.generateAuthToken = function() {
   let access = 'auth';
 
   let userIdAndAccess = {_id: user._id.toHexString(), access};
-  let token = jwt.sign(userIdAndAccess, 'abc123').toString();
+  let token = jwt.sign(userIdAndAccess, JWT_SECRET).toString();
 
   user.tokens.push({access, token});
 
@@ -77,7 +79,7 @@ UserSchema.statics.findByToken = function(token) {
   let decoded;
 
   try {
-    decoded = jwt.verify(token, 'abc123');
+    decoded = jwt.verify(token, JWT_SECRET);
   } catch (error) {
     return Promise.reject();
   }

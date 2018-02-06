@@ -10,13 +10,14 @@ const userTwoId = new ObjectID();
 const userOnePayload = {_id: userOneId, access: 'auth'};
 const userTwoPayload = {_id: userTwoId, access: 'auth'};
 
+const JWT_SECRET = process.env['JWT_SECRET'];
 const users = [{
   _id: userOneId,
   email: 'floyd@example.com',
   password: 'userOnePass',
   tokens: [{
     access: 'auth',
-    token: jwt.sign(userOnePayload, 'abc123').toString()
+    token: jwt.sign(userOnePayload, JWT_SECRET).toString()
   }]
 }, {
   _id: userTwoId,
@@ -24,7 +25,7 @@ const users = [{
   password: 'userTwoPass',
   tokens: [{
     access: 'auth',
-    token: jwt.sign(userTwoPayload, 'abc123').toString()
+    token: jwt.sign(userTwoPayload, JWT_SECRET).toString()
   }]
 }];
 
