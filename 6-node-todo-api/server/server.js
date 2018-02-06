@@ -14,6 +14,7 @@ const port = process.env.PORT;
 
 app.use(bodyParser.json());
 
+// Todo Routes
 app.post('/todos', (request, response) => {
   let todo = new Todo({
     text: request.body.text
@@ -97,6 +98,27 @@ app.patch('/todos/:id', (request, response) => {
       return response.status(400).send();
     })
 });
+
+
+// User Routes
+app.post('/users', (request, response) => {
+  let body = _.pick(request.body, ['email', 'password']);
+  let user = new User(body);
+
+  user.save()
+    .then(() => {
+      return user.generateAuthToken();
+    })
+    .then((token) => {
+      response.header('x-auth', token).send({ user })
+    })
+    .catch((error) => {
+      response.status(400).send({error});
+    })
+});
+
+
+
 
 app.listen(port, () => {
   console.log(`Started on port ${port}`);
