@@ -8,11 +8,8 @@ const { User } = require('./../models/user');
 
 const { todos, populateTodos, users, populateUsers } = require('./seed/seed');
 
-
-
 beforeEach(populateUsers);
 beforeEach(populateTodos);
-
 
 describe('POST /todos', () => {
   it('should create a new todo', (done) => {
